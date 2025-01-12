@@ -15,11 +15,13 @@
     "@emotion/styled": "^11.14.0",
     "@fontsource/ubuntu": "^5.1.1",
     "app": "file:",
+    "formik": "^2.4.6",
     "framer-motion": "^11.15.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
-    "react-router-dom": "^7.1.1"
+    "react-router-dom": "^7.1.1",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
