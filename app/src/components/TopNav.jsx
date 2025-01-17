@@ -11,8 +11,12 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
+import useAuth from "../hooks/useAuth";
 
 const TopNav = ({title, onOpen}) => {
+
+  const {logout} = useAuth();
+
   return (
     <Box px="4" bg="white">
       <HStack maxW="70rem" h="16" justify="space-between" mx="auto">
@@ -30,7 +34,7 @@ const TopNav = ({title, onOpen}) => {
          <Icon as={FaCircleUser}  fontSize="24px"></Icon>
        </MenuButton>
        <MenuList>
-         <MenuItem>Logout</MenuItem>
+         <MenuItem onClick={logout}>Logout</MenuItem>
          <MenuItem>Support</MenuItem>
        </MenuList>
      </Menu>

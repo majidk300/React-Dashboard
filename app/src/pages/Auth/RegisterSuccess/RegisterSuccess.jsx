@@ -1,13 +1,47 @@
-import {Box, Button, Center, Container, Icon, Text, VStack } from "@chakra-ui/react";
+import {Box, Button, Center, Container, Icon, Text, VStack, useToast, Spinner } from "@chakra-ui/react";
 import Card from "../../Dashboard/components/Card";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { verfiyEmailAddressSignup } from "../../../api/query/UserQuery";
+
 
 const RegisterSuccess = () => {
+
+  const toast = useToast();
+
+  const {token} = useParams();
+
+  const navigate = useNavigate();
+
+  const {isSuccess, isLoading} = useQuery({
+    queryKey: ["verify-email-token"],
+    queryFn: () => verfiyEmailAddressSignup({token}),
+    enabled: !!token,
+
+    onError: (error) => {
+      toast({
+        title: "SignUp Error",
+        description: error.message,
+        status: "error",
+      });
+
+      navigate("/signup");
+    },
+  });
+
+  if(isLoading){
+    return (
+      <Center h="100vh"><Spinner /></Center>
+    )
+  }
+   
   return (
     <Container>
         <Center minH="100vh" borderRadius="6">
-      <Card
+      {
+        isSuccess && (
+          <Card
       p={{
         base: "4",
         md: "6",
@@ -20,8 +54,8 @@ const RegisterSuccess = () => {
           </Text>
           <Text textAlign="center" textStyle="p2" color="black.60">
            Hurry! You have successfully created your account.
-            Enter the app to expore all it's features.
-            if you didn't send receive it, click the button below.
+            Enter the app to expore all Its features.
+            if you didnt send receive it, click the button below.
           </Text>
           
           <Box w="full">
@@ -34,6 +68,8 @@ const RegisterSuccess = () => {
 
         </VStack>
       </Card>
+        )}
+      
     </Center>
     </Container>
   );

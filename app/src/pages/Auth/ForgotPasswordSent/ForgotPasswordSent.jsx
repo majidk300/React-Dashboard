@@ -1,8 +1,15 @@
 import {Box, Center, Container, Icon, Text, VStack } from "@chakra-ui/react";
 import Card from "../../Dashboard/components/Card";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import { useParams } from "react-router-dom";
 
 const ForgotPasswordSent = () => {
+
+  // eslint-disable-next-line no-unused-vars
+  const params = useParams();
+
+  const {email} = useParams();
+
   return (
     <Container>
         <Center minH="100vh" borderRadius="6">
@@ -20,7 +27,7 @@ const ForgotPasswordSent = () => {
           </Text>
           <Text textAlign="center" textStyle="p2" color="black.60">
            We have sent instruction on how to reset your password to 
-           <Box as="b" color="p.black"> jenny.wilson@gmail.com </Box>
+           <Box as="b" color="p.black"> {email} </Box>
            Please  
            follow the instruction from the email. 
            We have sent you an email verification to{" "}
