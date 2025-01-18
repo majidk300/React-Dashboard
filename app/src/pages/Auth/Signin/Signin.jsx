@@ -67,8 +67,8 @@ const Signin = () => {
           </Text>
           <Formik
             initialValues={{
-              email: "majidnaseem01@gmail.com",
-              password: "123456789",
+              email: "",
+              password: "",
             }}
             onSubmit={(values) => {
               mutate(values);
