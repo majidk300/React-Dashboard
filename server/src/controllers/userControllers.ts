@@ -72,7 +72,7 @@ export const sendVerificationMail: RequestHandler = async (req, res, next) => {
     if (user.isUserVerified)
       return next(createHttpError(406, "User already verified"));
 
-    const encryptedToken = await bcrypt.hash(user._id.toString(), 8);
+    const encryptedToken = await bcrypt.hash(user.id.toString(), 8);
 
     const jwtToken = jwt.sign({ userId: user._id }, JWT_KEY, {
       expiresIn: "60m",
@@ -128,9 +128,9 @@ export const sendForgotPasswordMail: RequestHandler = async (
     const user = await User.findOne({ email });
     if (!user) return next(createHttpError(404, "Email Not Valid!"));
 
-    const encryptedToken = await bcrypt.hash(user._id.toString(), 8);
+    const encryptedToken = await bcrypt.hash(user.id.toString(), 8);
 
-    const jwtToken = jwt.sign({ userId: user._id }, JWT_KEY, {
+    const jwtToken = jwt.sign({ userId: user.id}, JWT_KEY, {
       expiresIn: "60m",
     });
 

@@ -161,7 +161,7 @@ var sendVerificationMail = function (req, res, next) { return __awaiter(void 0, 
                     return [2 /*return*/, next((0, http_errors_1.default)(404, "Email Not Valid!"))];
                 if (user.isUserVerified)
                     return [2 /*return*/, next((0, http_errors_1.default)(406, "User already verified"))];
-                return [4 /*yield*/, bcrypt_1.default.hash(user._id.toString(), 8)];
+                return [4 /*yield*/, bcrypt_1.default.hash(user.id.toString(), 8)];
             case 3:
                 encryptedToken = _a.sent();
                 jwtToken = jsonwebtoken_1.default.sign({ userId: user._id }, config_1.JWT_KEY, {
@@ -239,10 +239,10 @@ var sendForgotPasswordMail = function (req, res, next) { return __awaiter(void 0
                 user = _a.sent();
                 if (!user)
                     return [2 /*return*/, next((0, http_errors_1.default)(404, "Email Not Valid!"))];
-                return [4 /*yield*/, bcrypt_1.default.hash(user._id.toString(), 8)];
+                return [4 /*yield*/, bcrypt_1.default.hash(user.id.toString(), 8)];
             case 3:
                 encryptedToken = _a.sent();
-                jwtToken = jsonwebtoken_1.default.sign({ userId: user._id }, config_1.JWT_KEY, {
+                jwtToken = jsonwebtoken_1.default.sign({ userId: user.id }, config_1.JWT_KEY, {
                     expiresIn: "60m",
                 });
                 return [4 /*yield*/, config_1.transporter.sendMail({
