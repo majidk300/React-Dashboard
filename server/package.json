@@ -1,17 +1,22 @@
 {
   "name": "jwt-auth-typescript-express",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "JWT authentication project with TypeScript and Express.",
+  "main": "./dist/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
     "watch": "tsc -w",
     "start": "node ./dist/app.js",
     "start2": "nodemon ./dist/app.js",
     "dev": "npm-run-all --parallel watch start2"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "JWT",
+    "TypeScript",
+    "Express",
+    "Authentication"
+  ],
+  "author": "Your Name",
   "license": "ISC",
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -34,7 +39,7 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
-    "express": "^4.21.2",
+    "express": "^4.17.1",
     "http-errors": "^1.7.2",
     "joi": "^17.4.2",
     "jsonwebtoken": "^9.0.2",
