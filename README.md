@@ -1,5 +1,7 @@
 <h1 align="center">React Vite Dashboard 📊</h1> <br>
 🌐 Live Demo: https://vitereactdashboard.netlify.app/ <br>
+https://react-dashboard-auth.netlify.app/
+<br>
 💻 GitHub Source Code: https://github.com/majidk300/React-Dashboard <br>
 🙋 GitHub Profile: https://github.com/majidk300 <br>
 
